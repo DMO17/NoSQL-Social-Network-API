@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "seed": "nodemon seeds/index.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +18,13 @@
   "bugs": {
     "url": "https://github.com/DMO17/NoSQL-Social-Network-API/issues"
   },
-  "homepage": "https://github.com/DMO17/NoSQL-Social-Network-API#readme"
+  "homepage": "https://github.com/DMO17/NoSQL-Social-Network-API#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "moment": "^2.29.1",
+    "mongoose": "^6.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
