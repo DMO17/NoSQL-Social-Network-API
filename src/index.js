@@ -22,6 +22,3 @@ const init = async () => {
   }
 };
 init();
-
-// useNewUrlParser: true,
-// useUnifiedTopology: true,
