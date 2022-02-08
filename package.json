@@ -20,8 +20,8 @@
   },
   "homepage": "https://github.com/DMO17/NoSQL-Social-Network-API#readme",
   "dependencies": {
+    "date-fns": "^2.28.0",
     "express": "^4.17.2",
-    "moment": "^2.29.1",
     "mongoose": "^6.2.1"
   },
   "devDependencies": {
