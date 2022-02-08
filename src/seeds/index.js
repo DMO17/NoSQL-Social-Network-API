@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const users = require("./data");
+const { users } = require("./data");
 
 const { Users } = require("../models");
 
