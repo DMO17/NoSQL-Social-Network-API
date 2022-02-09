@@ -44,7 +44,7 @@ const getThoughtById = async (req, res) => {
   }
 };
 
-const createThought = (req, res) => {
+const createThought = async (req, res) => {
   try {
     const { thoughts, thoughtText, username } = req.body;
 
@@ -63,7 +63,7 @@ const createThought = (req, res) => {
   }
 };
 
-const updateThoughtById = (req, res) => {
+const updateThoughtById = async (req, res) => {
   try {
     const { thoughtId } = req.params;
     const { thoughts, thoughtText, username } = req.body;
