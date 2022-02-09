@@ -13,7 +13,7 @@ const filteredArray = (array, num) => {
 };
 
 const addThoughts = (usersData, thoughtsData, reactionData) => {
-  return usersData.map((eachUser) => {
+  usersData.map((eachUser) => {
     const userId = eachUser._id.toString();
 
     const listOfUserThoughts = filteredArray(thoughtsData, 4);
@@ -33,6 +33,15 @@ const addThoughts = (usersData, thoughtsData, reactionData) => {
     //   email: eachUser.email,
     //   thoughts: userThoughtsArray,
     // };
+  });
+
+  return thoughtsData.map((each) => {
+    return {
+      thoughtText: each,
+      username:
+        usersData[Math.floor(Math.random() * usersData.length)].username,
+      reactions: [],
+    };
   });
 };
 

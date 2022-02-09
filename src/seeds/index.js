@@ -20,12 +20,12 @@ const init = async () => {
     const allUsersFromDb = await Users.find({});
     const newUserDataWithReactions = addReactions(allUsersFromDb, responses);
     const newUserDataWithThoughts = addThoughts(allUsersFromDb, thoughts);
-    console.log(newUserDataWithThoughts);
-    // await Thoughts.deleteMany({});
-    // await Thoughts.insertMany(newUserDataWithThoughts);
-    // console.log(
-    //   "[INFO]: User data with random number of thoughts and reactions has been seeded in the mongoDB"
-    // );
+    // console.log(newUserDataWithThoughts);
+    await Thoughts.deleteMany({});
+    await Thoughts.insertMany(newUserDataWithThoughts);
+    console.log(
+      "[INFO]: User data with random number of thoughts and reactions has been seeded in the mongoDB"
+    );
 
     await mongoose.disconnect();
     console.log("[INFO] : Successfully dis-connected from db");
