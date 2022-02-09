@@ -22,15 +22,17 @@ const addThoughts = (usersData, thoughtsData, reactionData) => {
       return {
         thoughtText: each,
         username: eachUser.username,
-        reactions: reactionData,
+        // reactions: reactionData,
       };
     });
 
-    return {
-      username: eachUser.username,
-      email: eachUser.email,
-      thoughts: userThoughtsArray,
-    };
+    return userThoughtsArray;
+
+    // return {
+    //   username: eachUser.username,
+    //   email: eachUser.email,
+    //   thoughts: userThoughtsArray,
+    // };
   });
 };
 
