@@ -25,7 +25,6 @@ const addThoughts = (usersData, thoughtsData, reactionData) => {
 
 const addReactions = (userData, reactionData) => {
   const listOfUserReaction = filteredArray(reactionData, 5);
-
   return listOfUserReaction.map((each) => {
     return {
       reactionBody: each,
@@ -44,16 +43,33 @@ checkIfIncluded = (userData) => {
   });
 };
 
-const addFriends = (userData, friendData) => {
-  const friendsList = checkIfIncluded(userData);
-
+const addFriends = (userData, allUsernames) => {
   return userData.map((each) => {
     return {
       username: each.username,
       email: each.email,
-      friends: friendsList,
+      friends: checkIfIncluded(allUsernames),
     };
   });
 };
 
-module.exports = { addThoughts, addReactions, addFriends };
+const addCorrectThoughtsInUserDoc = (userData, thoughtsData) => {
+  return userData.map((user) => {
+    const dataMatch = thoughtsData.filter((thought) => {
+      return thought.username === user.username;
+    });
+    return {
+      username: user.username,
+      email: user.email,
+      thoughts: dataMatch,
+      friends: user.friends,
+    };
+  });
+};
+
+module.exports = {
+  addThoughts,
+  addReactions,
+  addFriends,
+  addCorrectThoughtsInUserDoc,
+};
