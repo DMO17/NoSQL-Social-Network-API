@@ -13,34 +13,12 @@ const filteredArray = (array, num) => {
 };
 
 const addThoughts = (usersData, thoughtsData, reactionData) => {
-  usersData.map((eachUser) => {
-    const userId = eachUser._id.toString();
-
-    const listOfUserThoughts = filteredArray(thoughtsData, 4);
-
-    const userThoughtsArray = listOfUserThoughts.map((each) => {
-      return {
-        thoughtText: each,
-        username: eachUser.username,
-        // reactions: reactionData,
-      };
-    });
-
-    return userThoughtsArray;
-
-    // return {
-    //   username: eachUser.username,
-    //   email: eachUser.email,
-    //   thoughts: userThoughtsArray,
-    // };
-  });
-
   return thoughtsData.map((each) => {
     return {
       thoughtText: each,
       username:
         usersData[Math.floor(Math.random() * usersData.length)].username,
-      reactions: [],
+      reactions: reactionData,
     };
   });
 };

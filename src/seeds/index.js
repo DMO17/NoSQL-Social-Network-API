@@ -19,7 +19,11 @@ const init = async () => {
     // bulk create Thoughts
     const allUsersFromDb = await Users.find({});
     const newUserDataWithReactions = addReactions(allUsersFromDb, responses);
-    const newUserDataWithThoughts = addThoughts(allUsersFromDb, thoughts);
+    const newUserDataWithThoughts = addThoughts(
+      allUsersFromDb,
+      thoughts,
+      newUserDataWithReactions
+    );
     // console.log(newUserDataWithThoughts);
     await Thoughts.deleteMany({});
     await Thoughts.insertMany(newUserDataWithThoughts);
