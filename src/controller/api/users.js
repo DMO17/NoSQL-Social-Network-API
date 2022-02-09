@@ -2,7 +2,7 @@ const { Users } = require("../../models");
 
 const getAllUsers = async (req, res) => {
   try {
-    const allUsers = await Users.find({});
+    const allUsers = await Users.find({}).select(["username", "email"]);
 
     return res.json({ success: true, data: allUsers });
   } catch (error) {
@@ -16,7 +16,10 @@ const getAllUsers = async (req, res) => {
 const getUserById = async (req, res) => {
   try {
     const { userId } = req.params;
-    const singleUser = await Users.findById(userId);
+    const singleUser = await Users.findById(userId).select([
+      "username",
+      "email",
+    ]);
 
     if (!singleUser) {
       console.log("[ERROR]: No user with that ID exists");
@@ -59,19 +62,19 @@ const updateUserById = async (req, res) => {
     const { userId } = req.params;
     const { username, email, thoughts = [], friends = [] } = req.body;
 
-    const updateCourse = await Users.findByIdAndUpdate(userId, {
+    const updateUser = await Users.findByIdAndUpdate(userId, {
       username,
       email,
       thoughts,
       friends,
     });
 
-    return res.json({ success: true, data: createUser });
+    return res.json({ success: true, data: updateUser });
   } catch (error) {
-    console.log(`[ERROR]: Failed to to create User | ${error.message}`);
+    console.log(`[ERROR]: Failed to to update User | ${error.message}`);
     return res
       .status(500)
-      .json({ success: false, error: "Failed to create User" });
+      .json({ success: false, error: "Failed to update User" });
   }
 };
 
