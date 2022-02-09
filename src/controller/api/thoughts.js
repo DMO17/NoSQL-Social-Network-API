@@ -1,8 +1,13 @@
-const { Users } = require("../../models");
+const { Thoughts } = require("../../models");
 
 const getAllThoughts = async (req, res) => {
   try {
-    const allThoughts = await Users.find({}).select(["thoughts"]);
+    const allThoughts = await Thoughts.find({}).select([
+      "thoughts",
+      "thoughtText",
+      "createdAt",
+      "username",
+    ]);
 
     return res.json({ success: true, data: allThoughts });
   } catch (error) {
@@ -12,10 +17,16 @@ const getAllThoughts = async (req, res) => {
       .json({ success: false, error: "Failed to get Thoughts" });
   }
 };
+
 const getThoughtById = async (req, res) => {
   try {
-    const { userId } = req.params;
-    const singleThought = await Users.findById(userId).select(["thoughts"]);
+    const { thoughtId } = req.params;
+    const singleThought = await Thoughts.findById(thoughtId).select([
+      "thoughts",
+      "thoughtText",
+      "createdAt",
+      "username",
+    ]);
 
     if (!singleThought) {
       console.log("[ERROR]: No thought with that ID exists");
@@ -33,8 +44,33 @@ const getThoughtById = async (req, res) => {
   }
 };
 const createThought = (req, res) => {};
+
 const updateThoughtById = (req, res) => {};
-const deleteThoughtById = (req, res) => {};
+
+const deleteThoughtById = async (req, res) => {
+  try {
+    const { thoughtId } = req.params;
+    const singleThought = await Thoughts.findByIdAndDelete(thoughtId);
+
+    if (!singleThought) {
+      console.log("[ERROR]: No thought with that ID exists");
+      return res
+        .status(400)
+        .json({ success: false, message: "Failed to delete thought" });
+    }
+
+    return res.json({
+      success: true,
+      message: " thought Deleted",
+      data: singleThought,
+    });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to get thought | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to get thought" });
+  }
+};
 
 module.exports = {
   getAllThoughts,
