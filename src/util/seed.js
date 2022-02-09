@@ -25,6 +25,7 @@ const addThoughts = (usersData, thoughtsData, reactionData) => {
 
 const addReactions = (userData, reactionData) => {
   const listOfUserReaction = filteredArray(reactionData, 5);
+
   return listOfUserReaction.map((each) => {
     return {
       reactionBody: each,
@@ -43,27 +44,13 @@ checkIfIncluded = (userData) => {
   });
 };
 
-const addFriends = (userData) => {
-  // return userData.map((each) => {
-  //   return {
-  //     username: each.username,
-  //     email: each.email,
-  //     thoughts: each.thoughts,
-  //     // friends: [
-  //     //   "6203b31b9456f356f13bf741",
-  //     //   "6203b31b9456f356f13bf732",
-  //     //   "6203b31b9456f356f13bf75f",
-  //     //   "6203b31b9456f356f13bf77c",
-  //     // ],
-  //     friends: checkIfIncluded(userData),
-  //   };
-  // });
+const addFriends = (userData, friendData) => {
   const friendsList = checkIfIncluded(userData);
+
   return userData.map((each) => {
     return {
       username: each.username,
       email: each.email,
-      thoughts: each.thoughts,
       friends: friendsList,
     };
   });

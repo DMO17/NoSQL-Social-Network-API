@@ -11,10 +11,19 @@ const init = async () => {
     });
     console.log("[INFO] : Successfully connected to db");
 
-    // // bulk create students
-    // await Users.deleteMany({});
-    // await Users.insertMany(users);
-    // console.log("[INFO]: User data has been seeded in the mongoDB");
+    // bulk create students
+    await Users.deleteMany({});
+    await Users.insertMany(users);
+    console.log("[INFO]: User data has been seeded in the mongoDB");
+
+    // Add friends to user
+    const latestUserData = await Users.find({});
+    const completeUserData = addFriends(latestUserData);
+    await Users.deleteMany({});
+    await Users.insertMany(completeUserData);
+    console.log(
+      "[INFO]: Complete User data with random number friends has been seeded in the mongoDB"
+    );
 
     // bulk create Thoughts
     const allUsersFromDb = await Users.find({});
@@ -24,7 +33,6 @@ const init = async () => {
       thoughts,
       newUserDataWithReactions
     );
-    // console.log(newUserDataWithThoughts);
     await Thoughts.deleteMany({});
     await Thoughts.insertMany(newUserDataWithThoughts);
     console.log(
@@ -37,4 +45,5 @@ const init = async () => {
     console.log(`[ERROR] :  Connection to db has failed | ${error.message}`);
   }
 };
+
 init();
