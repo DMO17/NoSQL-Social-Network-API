@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { users, thoughts, responses } = require("./data");
 const { Users } = require("../models");
-const { addThoughts, addReactions, addFriends } = require("../util/seed");
+const { addThoughts, addReactions, addFriends } = require("../helper/seedUtil");
 
 const init = async () => {
   try {
