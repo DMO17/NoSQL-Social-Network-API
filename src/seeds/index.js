@@ -16,7 +16,7 @@ const init = async () => {
     await Users.insertMany(users);
     console.log("[INFO]: User data has been seeded in the mongoDB");
 
-    // bulk create thoughts for each user
+    // bulk create thoughts and reactions for each user
 
     const allUsersFromDb = await Users.find({});
     const newUserDataWithReactions = addReactions(allUsersFromDb, responses);
@@ -31,10 +31,10 @@ const init = async () => {
       "[INFO]: User data with random number of thoughts and reactions has been seeded in the mongoDB"
     );
 
+    // bulk create friends for each user
+
     const latestUserData = await Users.find({});
-    // console.log(latestUserData);
     const completeUserData = addFriends(latestUserData);
-    console.log(completeUserData, completeUserData.length);
     await Users.deleteMany({});
     await Users.insertMany(completeUserData);
     console.log(

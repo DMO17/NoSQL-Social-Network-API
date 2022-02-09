@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "seed": "nodemon src/seeds/index.js"
+    "seed": "node src/seeds/index.js"
   },
   "repository": {
     "type": "git",
