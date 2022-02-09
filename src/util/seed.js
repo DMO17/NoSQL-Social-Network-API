@@ -1,21 +1,24 @@
 const { thoughts } = require("../seeds/data");
 
-const addThoughts = (usersData, thoughtsData) => {
+const filteredArray = (array) => {
+  return array
+    .sort(() => Math.random() - 0.5)
+    .filter((each, index) => {
+      return index <= Math.floor(Math.random() * (3 - 1 + 1) + 0);
+    });
+};
+
+const addThoughts = (usersData, thoughtsData, reactionData) => {
   return usersData.map((eachUser) => {
     const userId = eachUser._id.toString();
 
-    const num = Math.floor(Math.random() * (2 - 1 + 1) + 0);
-    const listOfUserThoughts = thoughts
-      .sort(() => Math.random() - 0.5)
-      .filter((each, index) => {
-        return index <= num;
-      });
+    const listOfUserThoughts = filteredArray(thoughtsData);
 
     const userThoughtsArray = listOfUserThoughts.map((each) => {
       return {
         thoughtText: each,
         username: eachUser.username,
-        reactions: [],
+        reactions: reactionData,
       };
     });
 
@@ -27,4 +30,14 @@ const addThoughts = (usersData, thoughtsData) => {
   });
 };
 
-module.exports = { addThoughts };
+const addReactions = (userData, reactionData) => {
+  const listOfUserReaction = filteredArray(reactionData);
+  return listOfUserReaction.map((each) => {
+    return {
+      reactionBody: each,
+      username: userData[Math.floor(Math.random() * userData.length)].username,
+    };
+  });
+};
+
+module.exports = { addThoughts, addReactions };

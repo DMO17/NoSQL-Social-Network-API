@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const { users, thoughts } = require("./data");
+const { users, thoughts, responses } = require("./data");
 const { Users } = require("../models");
-const { addThoughts } = require("../util/seed");
+const { addThoughts, addReactions } = require("../util/seed");
 
 const init = async () => {
   try {
@@ -11,23 +11,24 @@ const init = async () => {
     });
     console.log("[INFO] : Successfully connected to db");
 
-    // bulk create students
-    await Users.deleteMany({});
-    await Users.insertMany(users);
-
-    console.log("[INFO]: User data has been seeded in the mongoDB");
+    // // bulk create students
+    // await Users.deleteMany({});
+    // await Users.insertMany(users);
+    // console.log("[INFO]: User data has been seeded in the mongoDB");
 
     // bulk create thoughts for each user
 
     const allUsersFromDb = await Users.find({});
-
-    const newUserDataWithThoughts = addThoughts(allUsersFromDb, thoughts);
-
+    const newUserDataWithReactions = addReactions(allUsersFromDb, responses);
+    const newUserDataWithThoughts = addThoughts(
+      allUsersFromDb,
+      thoughts,
+      newUserDataWithReactions
+    );
     await Users.deleteMany({});
     await Users.insertMany(newUserDataWithThoughts);
-
     console.log(
-      "[INFO]: User data with thoughts has been seeded in the mongoDB"
+      "[INFO]: User data with random number of thoughts and reactions has been seeded in the mongoDB"
     );
 
     await mongoose.disconnect();
