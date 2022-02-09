@@ -1,3 +1,5 @@
+const { Users } = require("../../models");
+
 const getAllThoughts = () => {};
 const getThoughtById = () => {};
 const createThought = () => {};
@@ -11,3 +13,5 @@ module.exports = {
   updateThoughtById,
   deleteThoughtById,
 };
+
+

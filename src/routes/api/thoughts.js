@@ -10,9 +10,9 @@ const {
 const router = Router();
 
 router.get("/", getAllThoughts);
-router.get("/thoughtId", getThoughtById);
+router.get("/:thoughtId", getThoughtById);
 router.post("/", createThought);
-router.put("/thoughtId", updateThoughtById);
-router.delete("/thoughtId", deleteThoughtById);
+router.put("/:thoughtId", updateThoughtById);
+router.delete("/:thoughtId", deleteThoughtById);
 
 module.exports = router;
