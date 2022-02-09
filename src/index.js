@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 const express = require("express");
-
+const routes = require("./routes");
 const PORT = 5001;
 
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+app.use(routes);
 const init = async () => {
   try {
     await mongoose.connect("mongodb://localhost:27017/socialNetworkDb", {

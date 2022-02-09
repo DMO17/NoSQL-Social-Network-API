@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const friends = require("./friends");
 const {
   getAllUsers,
   getUserById,
@@ -10,9 +11,11 @@ const {
 const router = Router();
 
 router.get("/", getAllUsers);
-router.get("/userId", getUserById);
+router.get("/:userId", getUserById);
 router.post("/", createUser);
-router.put("/userId", updateUserById);
-router.get("/userId", deleteUserById);
+router.put("/:userId", updateUserById);
+router.delete("/:userId", deleteUserById);
+
+router.use("/:userId/friends", friends);
 
 module.exports = router;

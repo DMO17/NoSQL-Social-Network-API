@@ -13,6 +13,6 @@ router.get("/", getAllThoughts);
 router.get("/thoughtId", getThoughtById);
 router.post("/", createThought);
 router.put("/thoughtId", updateThoughtById);
-router.get("/thoughtId", deleteThoughtById);
+router.delete("/thoughtId", deleteThoughtById);
 
 module.exports = router;
