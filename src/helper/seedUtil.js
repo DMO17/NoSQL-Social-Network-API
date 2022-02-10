@@ -18,7 +18,7 @@ const addThoughts = (usersData, thoughtsData, reactionData) => {
       thoughtText: each,
       username:
         usersData[Math.floor(Math.random() * usersData.length)].username,
-      reactions: reactionData,
+      reactions: addReactions(usersData, reactionData),
     };
   });
 };
@@ -55,13 +55,13 @@ const addFriends = (userData, allUsernames) => {
 
 const addCorrectThoughtsInUserDoc = (userData, thoughtsData) => {
   return userData.map((user) => {
-    const dataMatch = thoughtsData.filter((thought) => {
+    const dataMatch = thoughtsData.find((thought) => {
       return thought.username === user.username;
     });
     return {
       username: user.username,
       email: user.email,
-      thoughts: dataMatch,
+      thoughts: dataMatch ? [dataMatch._id.toString()] : [],
       friends: user.friends,
     };
   });

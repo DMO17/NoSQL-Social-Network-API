@@ -31,13 +31,13 @@ const init = async () => {
       "[INFO]:  User data with random number friends has been seeded in the mongoDB"
     );
 
-    // bulk create Thoughts
+    // bulk create reaction in thoughts
     const allUsersFromDb = await Users.find({});
     const newUserDataWithReactions = addReactions(allUsersFromDb, responses);
     const newUserDataWithThoughts = addThoughts(
       allUsersFromDb,
       thoughts,
-      newUserDataWithReactions
+      responses
     );
     await Thoughts.deleteMany({});
     await Thoughts.insertMany(newUserDataWithThoughts);
