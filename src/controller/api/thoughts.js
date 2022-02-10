@@ -1,4 +1,4 @@
-const { Thoughts } = require("../../models");
+const { Thoughts, Users } = require("../../models");
 
 const getAllThoughts = async (req, res) => {
   try {
@@ -46,10 +46,19 @@ const getThoughtById = async (req, res) => {
 
 const createThought = async (req, res) => {
   try {
-    const { thoughts, thoughtText, username } = req.body;
+    const { reactions = [], thoughtText, username } = req.body;
+
+    const checkIfUserExists = await Users.findOne({ username });
+
+    if (!checkIfUserExists) {
+      console.log("[ERROR]: No user with that name exists");
+      return res
+        .status(400)
+        .json({ success: false, message: "Failed to create thought" });
+    }
 
     const createThought = await Thoughts.create({
-      thoughts,
+      reactions,
       thoughtText,
       username,
     });
@@ -66,12 +75,20 @@ const createThought = async (req, res) => {
 const updateThoughtById = async (req, res) => {
   try {
     const { thoughtId } = req.params;
-    const { thoughts, thoughtText, username } = req.body;
+    const { reactions = [], thoughtText } = req.body;
+
+    const checkIfThoughtExists = await Thoughts.findById(thoughtId);
+
+    if (!checkIfThoughtExists) {
+      console.log("[ERROR]: No thought with that id exists");
+      return res
+        .status(400)
+        .json({ success: false, message: "Failed to update thought" });
+    }
 
     const updateThought = await Thoughts.findByIdAndUpdate(thoughtId, {
-      thoughts,
+      reactions,
       thoughtText,
-      username,
     });
 
     return res.json({ success: true, data: updateThought });

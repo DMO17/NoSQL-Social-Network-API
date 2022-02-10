@@ -16,10 +16,7 @@ const getAllUsers = async (req, res) => {
 const getUserById = async (req, res) => {
   try {
     const { userId } = req.params;
-    const singleUser = await Users.findById(userId).select([
-      "username",
-      "email",
-    ]);
+    const singleUser = await Users.findById(userId).populate("thoughts");
 
     if (!singleUser) {
       console.log("[ERROR]: No user with that ID exists");
