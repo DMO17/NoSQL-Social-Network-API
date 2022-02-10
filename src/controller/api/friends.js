@@ -48,6 +48,46 @@ const createFriend = async (req, res) => {
   }
 };
 
-const deleteFriend = (req, res) => {};
+const deleteFriend = async (req, res) => {
+  try {
+    const { userId, friendId } = req.params;
+
+    const checkIfUserExists = await Users.findById(userId);
+    if (!checkIfUserExists) {
+      console.log("[ERROR]: No user with that id exists");
+      return res
+        .status(400)
+        .json({ success: false, message: "Failed to delete friend" });
+    }
+
+    const checkIfFriendExists = await Users.findById(friendId);
+    if (!checkIfFriendExists) {
+      console.log("[ERROR]: No user (friend) with that id exists");
+      return res
+        .status(400)
+        .json({ success: false, message: "Failed to delete friend" });
+    }
+
+    if (!checkIfUserExists.friends.includes(friendId)) {
+      console.log(
+        "[ERROR]: Failed to Friend because this friend id does'nt exist in your friends list"
+      );
+      return res
+        .status(400)
+        .json({ success: false, message: "Failed to add friend" });
+    }
+
+    const deleteFriend = await Users.findByIdAndUpdate(userId, {
+      $pull: { friends: friendId },
+    });
+
+    return res.json({ success: true, data: deleteFriend });
+  } catch (error) {
+    console.log(`[ERROR]: Failed to to delete friend | ${error.message}`);
+    return res
+      .status(500)
+      .json({ success: false, error: "Failed to to delete friend" });
+  }
+};
 
 module.exports = { createFriend, deleteFriend };
