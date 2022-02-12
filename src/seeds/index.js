@@ -16,34 +16,33 @@ const init = async () => {
     });
     console.log("[INFO] : Successfully connected to db");
 
-    // bulk create students
+    // BULK CREATE USERS IN DOCUMENT
     await Users.deleteMany({});
     await Users.insertMany(users);
     console.log("[INFO]: User data has been seeded in the mongoDB");
 
-    // Add friends to user
-    const latestUserData = await Users.find({});
+    // ADD RANDOMLY GENERATED NUMBER OF FRIENDS IN USER DOCUMENT
+    const userInfoFromDb = await Users.find({});
     const allUsernames = await Users.find({}).select(["_id"]);
-    const userDataWithFriends = addFriends(latestUserData, allUsernames);
+    const userDataWithFriends = addFriends(userInfoFromDb, allUsernames);
     await Users.deleteMany({});
     await Users.insertMany(userDataWithFriends);
     console.log(
-      "[INFO]:  User data with random number friends has been seeded in the mongoDB"
+      "[INFO]: User data with random number friends has been seeded in the mongoDB"
     );
 
-    // // bulk create reaction in thoughts
-    // const allUsersFromDb = await Users.find({});
-    // const newUserDataWithReactions = addReactions(allUsersFromDb, responses);
-    // const newUserDataWithThoughts = addThoughts(
-    //   allUsersFromDb,
-    //   thoughts,
-    //   responses
-    // );
-    // await Thoughts.deleteMany({});
-    // await Thoughts.insertMany(newUserDataWithThoughts);
-    // console.log(
-    //   "[INFO]: User data with random number of thoughts and reactions has been seeded in the mongoDB"
-    // );
+    // BULK CREATE THOUGHTS AND RANDOM REACTION FOR EACH THOUGHT
+    const allUsersFromDb = await Users.find({});
+    const newUserDataWithThoughts = addThoughts(
+      allUsersFromDb,
+      thoughts,
+      responses
+    );
+    await Thoughts.deleteMany({});
+    await Thoughts.insertMany(newUserDataWithThoughts);
+    console.log(
+      "[INFO]: User data with random number of thoughts and reactions has been seeded in the mongoDB"
+    );
 
     // // seed thoughts in to user document
     // const finalUserData = await Users.find({});

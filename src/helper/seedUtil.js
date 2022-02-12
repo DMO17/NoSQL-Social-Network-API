@@ -12,35 +12,15 @@ const randomlyGeneratedList = (array, num) => {
     });
 };
 
-const addThoughts = (usersData, thoughtsData, reactionData) => {
-  return thoughtsData.map((each) => {
-    return {
-      thoughtText: each,
-      username:
-        usersData[Math.floor(Math.random() * usersData.length)].username,
-      reactions: addReactions(usersData, reactionData),
-    };
-  });
-};
+const randomFriendsListNoDuplicates = (userData) => {
+  const listOfRandomFriendsIds = randomlyGeneratedList(
+    userData,
+    userData.length
+  ).map((each) => each._id.toString());
 
-const addReactions = (userData, reactionData) => {
-  const listOfUserReaction = randomlyGeneratedList(reactionData, 5);
-  return listOfUserReaction.map((each) => {
-    return {
-      reactionBody: each,
-      username: userData[Math.floor(Math.random() * userData.length)].username,
-    };
-  });
-};
-
-const removeDuplicates = (userData) => {
-  const listOfFriends = randomlyGeneratedList(userData, userData.length)
-    .map((each) => each._id.toString())
-    .map((each) => each);
-
-  return listOfFriends.filter(function (item, pos) {
-    return listOfFriends.indexOf(item) == pos;
-  });
+  return listOfRandomFriendsIds.filter(
+    (item, pos) => listOfRandomFriendsIds.indexOf(item) == pos
+  );
 };
 
 const addFriends = (userDataArray, listOfUsernames) => {
@@ -48,7 +28,28 @@ const addFriends = (userDataArray, listOfUsernames) => {
     return {
       username: eachUser.username,
       email: eachUser.email,
-      friends: removeDuplicates(listOfUsernames),
+      friends: randomFriendsListNoDuplicates(listOfUsernames),
+    };
+  });
+};
+
+const addReactions = (userData, reactionData) => {
+  // const listOfUserReaction = randomlyGeneratedList(reactionData, 5);
+  return randomlyGeneratedList(reactionData, 5).map((each) => {
+    return {
+      reactionBody: each,
+      username: userData[Math.floor(Math.random() * userData.length)].username,
+    };
+  });
+};
+
+const addThoughts = (usersData, thoughtsData, reactionData) => {
+  return thoughtsData.map((each) => {
+    return {
+      thoughtText: each,
+      username:
+        usersData[Math.floor(Math.random() * usersData.length)].username,
+      reactions: addReactions(usersData, reactionData),
     };
   });
 };
