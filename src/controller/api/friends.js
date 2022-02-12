@@ -33,11 +33,13 @@ const createFriend = async (req, res) => {
         .json({ success: false, message: "Failed to add friend" });
     }
 
-    // const friends = yourFriendsId;
-
-    const addFriend = await Users.findByIdAndUpdate(userId, {
-      $push: { friends: yourFriendsId },
-    });
+    const addFriend = await Users.findByIdAndUpdate(
+      userId,
+      {
+        $push: { friends: yourFriendsId },
+      },
+      { new: true }
+    );
 
     return res.json({ success: true, data: addFriend });
   } catch (error) {
@@ -77,9 +79,13 @@ const deleteFriend = async (req, res) => {
         .json({ success: false, message: "Failed to add friend" });
     }
 
-    const deleteFriend = await Users.findByIdAndUpdate(userId, {
-      $pull: { friends: friendId },
-    });
+    const deleteFriend = await Users.findByIdAndUpdate(
+      userId,
+      {
+        $pull: { friends: friendId },
+      },
+      { new: true }
+    );
 
     return res.json({ success: true, data: deleteFriend });
   } catch (error) {
