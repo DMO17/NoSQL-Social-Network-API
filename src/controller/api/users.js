@@ -59,12 +59,16 @@ const updateUserById = async (req, res) => {
     const { userId } = req.params;
     const { username, email, thoughts = [], friends = [] } = req.body;
 
-    const updateUser = await Users.findByIdAndUpdate(userId, {
-      username,
-      email,
-      thoughts,
-      friends,
-    });
+    const updateUser = await Users.findByIdAndUpdate(
+      userId,
+      {
+        username,
+        email,
+        thoughts,
+        friends,
+      },
+      { new: true }
+    );
 
     return res.json({ success: true, data: updateUser });
   } catch (error) {

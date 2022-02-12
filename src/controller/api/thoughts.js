@@ -86,10 +86,14 @@ const updateThoughtById = async (req, res) => {
         .json({ success: false, message: "Failed to update thought" });
     }
 
-    const updateThought = await Thoughts.findByIdAndUpdate(thoughtId, {
-      reactions,
-      thoughtText,
-    });
+    const updateThought = await Thoughts.findByIdAndUpdate(
+      thoughtId,
+      {
+        reactions,
+        thoughtText,
+      },
+      { new: true }
+    );
 
     return res.json({ success: true, data: updateThought });
   } catch (error) {
