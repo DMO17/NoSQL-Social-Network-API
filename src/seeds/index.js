@@ -44,18 +44,18 @@ const init = async () => {
       "[INFO]: User data with random number of thoughts and reactions has been seeded in the mongoDB"
     );
 
-    // // seed thoughts in to user document
-    // const finalUserData = await Users.find({});
-    // const finalThoughtData = await Thoughts.find({});
-    // const combineUserThoughtData = addCorrectThoughtsInUserDoc(
-    //   finalUserData,
-    //   finalThoughtData
-    // );
-    // await Users.deleteMany({});
-    // await Users.insertMany(combineUserThoughtData);
-    // console.log(
-    //   "[INFO]: Complete User data with random number friends and matching thoughts has been seeded in the mongoDB"
-    // );
+    // seed thoughts in to user document
+    const finalUserData = await Users.find({});
+    const finalThoughtData = await Thoughts.find({});
+    const combineUserThoughtData = addCorrectThoughtsInUserDoc(
+      finalUserData,
+      finalThoughtData
+    );
+    await Users.deleteMany({});
+    await Users.insertMany(combineUserThoughtData);
+    console.log(
+      "[INFO]: Complete User data with random number friends and matching thoughts has been seeded in the mongoDB"
+    );
 
     await mongoose.disconnect();
     console.log("[INFO] : Successfully dis-connected from db");

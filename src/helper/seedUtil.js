@@ -56,13 +56,18 @@ const addThoughts = (usersData, thoughtsData, reactionData) => {
 
 const addCorrectThoughtsInUserDoc = (userData, thoughtsData) => {
   return userData.map((user) => {
-    const dataMatch = thoughtsData.find((thought) => {
-      return thought.username === user.username;
-    });
+    const dataMatch = thoughtsData
+      .filter((thought) => {
+        return thought.username === user.username;
+      })
+      .filter((matchedThought) => {
+        return matchedThought._id.toString();
+      });
+
     return {
       username: user.username,
       email: user.email,
-      thoughts: dataMatch ? [dataMatch._id.toString()] : [],
+      thoughts: dataMatch,
       friends: user.friends,
     };
   });

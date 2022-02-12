@@ -1,37 +1,3 @@
-const userssss = [
-  {
-    username: "bobsmith",
-    email: "bobsmith@email.com",
-    thoughts: [
-      {
-        thoughtText: "NoSQL is super easy",
-        // createdAt: "20th Mar 2021 14:00",
-        username: "bobsmith",
-        reactions: [
-          {
-            // reactionId: "123",
-            reactionBody: "Yes I agree with you!!",
-            username: "janesmith",
-            // createdAt: "20th Mar 2021 14:10",
-          },
-          {
-            // reactionId: "456",
-            reactionBody: "Yup agree",
-            username: "tomsmith",
-            // createdAt: "20th Mar 2021 14:15",
-          },
-          {
-            // reactionId: "789",
-            reactionBody: "I am struggling with NoSQL",
-            username: "jacksmith",
-            // createdAt: "20th Mar 2021 14:18",
-          },
-        ],
-      },
-    ],
-  },
-];
-
 const users = [
   {
     username: "brailsstain",
@@ -93,6 +59,10 @@ const thoughts = [
   "I dont like Breaking Bad, The Walking Dead or Peaky Blinders",
   "Chewing gum is disgusting. Football is boring. Chaplin is funnier than Keaton. Plain choc digestives are better than milk choc ones.",
   "Karaoke is only fun if you are a good singer and love attention. It sucks for the rest of us.",
+  "The Beatles are overrated",
+  "I have no desire to ever visit theme parks",
+  "I dont like Breaking Bad, The Walking Dead or Peaky Blinders",
+  "Chewing gum is disgusting. Football is boring. ",
 ];
 
 const responses = [
@@ -104,6 +74,9 @@ const responses = [
   "Doing something is better than doing nothing. Unless its going to get you in jail or in parliament. Or one after the other.",
   "Do you own a goat? If not, dont do it.",
   "Becoming a poacher is never a good idea ethically. Sorry, did I mis-read the statement?",
+  "why not loool",
+  "Word!, 100",
+  "Do you own a fax machine? If not, dont do it.",
   "hat which doesnt kill you makes you stronger, right? Unless it almost kills you, and renders you weaker. Being strong is pretty rad though, so go ahead.",
   "No, not a good idea.",
   "Yes. Most definitely, yes.",
