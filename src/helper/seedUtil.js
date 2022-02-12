@@ -1,10 +1,10 @@
 const { thoughts } = require("../seeds/data");
 
 const randomNumber = (num) => {
-  return Math.floor(Math.random() * (num - 1 + 1) + 0);
+  return Math.floor(Math.random() * num);
 };
 
-const filteredArray = (array, num) => {
+const randomlyGeneratedList = (array, num) => {
   return array
     .sort(() => Math.random() - 0.5)
     .filter((each, index) => {
@@ -24,7 +24,7 @@ const addThoughts = (usersData, thoughtsData, reactionData) => {
 };
 
 const addReactions = (userData, reactionData) => {
-  const listOfUserReaction = filteredArray(reactionData, 5);
+  const listOfUserReaction = randomlyGeneratedList(reactionData, 5);
   return listOfUserReaction.map((each) => {
     return {
       reactionBody: each,
@@ -33,8 +33,8 @@ const addReactions = (userData, reactionData) => {
   });
 };
 
-checkIfIncluded = (userData) => {
-  const listOfFriends = filteredArray(userData, userData.length)
+const removeDuplicates = (userData) => {
+  const listOfFriends = randomlyGeneratedList(userData, userData.length)
     .map((each) => each._id.toString())
     .map((each) => each);
 
@@ -43,12 +43,12 @@ checkIfIncluded = (userData) => {
   });
 };
 
-const addFriends = (userData, allUsernames) => {
-  return userData.map((each) => {
+const addFriends = (userDataArray, listOfUsernames) => {
+  return userDataArray.map((eachUser) => {
     return {
-      username: each.username,
-      email: each.email,
-      friends: checkIfIncluded(allUsernames),
+      username: eachUser.username,
+      email: eachUser.email,
+      friends: removeDuplicates(listOfUsernames),
     };
   });
 };
