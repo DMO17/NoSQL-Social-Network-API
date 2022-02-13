@@ -1,0 +1,379 @@
+{
+	"info": {
+		"_postman_id": "494d1761-f09d-44dc-a095-c7f9e3849644",
+		"name": "social-network-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Thoughts",
+			"item": [
+				{
+					"name": "thoughts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/thoughts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"thoughts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "thoughts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/thoughts/6209329987e7524e1b17e347",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"thoughts",
+								"6209329987e7524e1b17e347"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "thoughts",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"thoughtText\": \"tester Thought to delete 2\",\r\n    \"username\": \"Tester1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/thoughts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"thoughts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "thoughts",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"thoughtText\": \"CHANGED TEXT !!!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/thoughts/6209329987e7524e1b17e347",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"thoughts",
+								"6209329987e7524e1b17e347"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "thoughts",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/thoughts/6209329987e7524e1b17e347",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"thoughts",
+								"6209329987e7524e1b17e347"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/users/62092ef6f1e9a57d4488ab37",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"users",
+								"62092ef6f1e9a57d4488ab37"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Tester123\",\r\n    \"email\": \"testsample@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"changedEmaile@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/users/62092f50b4ac683474101a41",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"users",
+								"62092f50b4ac683474101a41"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/users/62092f50b4ac683474101a45",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"users",
+								"62092f50b4ac683474101a45"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Friends",
+			"item": [
+				{
+					"name": "friends",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"yourFriendsId\": \"62092ef6f1e9a57d4488ab3d\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/users/62093025b4ac683474101a46/friends",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"users",
+								"62093025b4ac683474101a46",
+								"friends"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "friends",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/users/62093025b4ac683474101a46/friends/62092ef6f1e9a57d4488ab3d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"users",
+								"62093025b4ac683474101a46",
+								"friends",
+								"62092ef6f1e9a57d4488ab3d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reactions",
+			"item": [
+				{
+					"name": "reactions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"username\": \"gownshampoo\" , \r\n   \"reactionBody\": \"!WOW!!!!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/thoughts/620427bd156bc4130dd7f0e1/reactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"thoughts",
+								"620427bd156bc4130dd7f0e1",
+								"reactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reaction",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/thoughts/620427bd156bc4130dd7f0e1/reactions/6207e148a5fa07d85cafc8f1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"thoughts",
+								"620427bd156bc4130dd7f0e1",
+								"reactions",
+								"6207e148a5fa07d85cafc8f1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
