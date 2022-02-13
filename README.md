@@ -6,12 +6,14 @@ MongoDB is a popular choice for many social networks due to its speed with large
 
 The project is to build an API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list. I used an Express.js for routing, a MongoDB database, and the Mongoose ODM. In addition to using the [Express.js](https://www.npmjs.com/package/express) and [Mongoose](https://www.npmjs.com/package/mongoose) packages, i have also used a JavaScript date library of your choice or the native JavaScript `Date` object to format timestamps. Also , no seed data is provided, i created my own data using postman after creating my API.
 
-## Demo
+## Video Demo
 
 To see the demo of the project click the following sections;
 
-- <a href='https://tech-blogs-m-v-c.herokuapp.com/'>Users </a>
-- <a href='https://tech-blogs-m-v-c.herokuapp.com/'>Thoughts </a>
+- <a href='https://drive.google.com/file/d/1BTWENeaGzrTyUB1rPJmjQ-JwOfu77WFQ/view?usp=sharing'>Users </a>
+- <a href='https://drive.google.com/file/d/10bQpOuYL4Bmi68bI3KN9asJ6MsaYEQzE/view?usp=sharing'>Friends </a>
+- <a href='https://drive.google.com/file/d/1st6yNXiuBT3xbzVS8vTvf2BXesuF6nqK/view?usp=sharing'>Thoughts </a>
+- <a href='https://drive.google.com/file/d/1xbGff1j4g4PClIS6g4pa3h2WdAwmvYFq/view?usp=sharing'>Reactions </a>
 
 ## User Story
 
